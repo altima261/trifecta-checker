@@ -1,102 +1,33 @@
-# 🛡️ Trifecta Checker - Lethal Trifecta Safety Gate
+# Trifecta Checker 🛡️ - Making AI Agents Trustworthy
 
-**Built for Meta Global AI Developer Hackathon 2026 - Japan 🇯🇵**
-**by altima261 - https://github.com/altima261**
+> One API call to stop data theft before it happens + Concordium ID for Verifiable Trusted Agents
 
-[[Live Demo](https://img.shields.io/badge/Live%20Demo-vercel.app-black?style=for-the-badge)](https://trifecta-checker.vercel.app/)
-[[API](https://img.shields.io/badge/API-Ready-green?style=for-the-badge)](#api)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://trifecta-checker.vercel.app/)
+[![API](https://img.shields.io/badge/API-Live-blue?style=for-the-badge)](https://trifecta-checker.vercel.app/api/check-trifecta)
+[![Concordium](https://img.shields.io/badge/Concordium-Trusted_Agents-0D7DFF?style=for-the-badge)](https://www.encode.club/hackathons/concordium)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-### The Problem: The Lethal Trifecta
+**Live Demo:** https://trifecta-checker.vercel.app/  
+**API Endpoint:** https://trifecta-checker.vercel.app/api/check-trifecta  
+**Dev.to Article:** https://dev.[STRIPPED 84 bytes]  
+**Concordium Hackathon:** https://www.encode.club/hackathons/concordium - ✅ Registered, Awaiting Start Nov 2, 2026
 
-Coined by Simon Willison, an AI agent becomes a data-theft tool when it has ALL THREE:
+Built by [@altima261](https://【entity-github¦canonical_name=GitHub】.com/altima261) | Tokyo / Jeddah
 
-1. **Private Data Access** - inbox, DB, docs, internal APIs
-2. **Untrusted Content** - web pages, emails, file uploads, third-party APIs
-3. **External Communication** - HTTP calls, emails, webhooks
+---
 
-> If an agent can read private data + read untrusted content + send data out, anyone who can put text in front of it can steal your data.
+## 🚨 Problem: Why AI Agents Can't Be Trusted
 
-### The Solution: Safety Gate
+Simon Willison's **Lethal Trifecta** - When an AI agent has all 3, it becomes a data-theft weapon:
 
-Trifecta Checker blocks execution BEFORE the agent runs.
+1. **Private Data Access** - Gmail, DB, docs, files
+2. **Untrusted Content** - Web pages, emails, user uploads
+3. **External Communication** - HTTP requests, send_email, webhooks
 
-**Live API:** `https://trifecta-checker.vercel.app/api/check-trifecta`
+> If all 3 exist, anyone who can put text in front of the agent can steal private data via prompt injection.
 
-```bash
-curl -X POST https://trifecta-checker.vercel.app/api/check-trifecta \
-  -H "Content-Type: application/json" \
-  -d '{"tools":["read_gmail","browse_web","send_email"],"agentName":"my-agent"}'
-```
+**Current agents check permissions, not combinations. No safety gate.**
 
-### Tested Results - All 3 Levels Verified ✅
+---
 
-#### 1. LETHAL - Score 3/3 🚨 - BLOCKED (403)
-```json
-Tools: ["read_gmail", "browse_web", "send_email"]
-Result: { "isLethal": true, "riskLevel": "lethal", "score": 3 }
-Action: 403 Forbidden - Blocked by gate
-Fix: Split agent into Reader (no exfil) + Sender (no private)
-```
-
-#### 2. WARNING - Score 2/3 ⚠️ - Allowed with warning
-```json
-Tools: ["read_gmail", "browse_web"]
-Result: { "isLethal": false, "riskLevel": "warning", "score": 2 }
-Action: 200 OK - Proceed with caution
-```
-
-#### 3. SAFE - Score 1/3 ✅ - Allowed
-```json
-Tools: ["browse_web"]
-Result: { "isLethal": false, "riskLevel": "safe", "score": 1 }
-Action: 200 OK - Safe to proceed
-```
-
-### Integration - Works with ANY Agent
-
-**Python:**
-```python
-from trifecta_checker import TrifectaGate
-
-gate = TrifectaGate(api_url="https://trifecta-checker.vercel.app/api/check-trifecta")
-result = gate.check(tools=["read_gmail","browse_web","send_http"])
-
-if result.is_lethal:
-    raise Exception(f"Blocked: {result.fixes}")
-```
-
-**JavaScript / Vercel AI SDK / Muse:**
-```javascript
-import { TrifectaGate } from './sdk/js/trifecta.js'
-const gate = new TrifectaGate('https://trifecta-checker.vercel.app/api/check-trifecta')
-const res = await gate.check({ tools: agentTools })
-if (res.isLethal) throw new Error('Lethal Trifecta')
-```
-
-### Architecture
-
-```
-User Query -> Trifecta Gate -> Check manifest -> [LETHAL?] -> BLOCK + Fix
-                                   |
-                                   +-> [SAFE] -> Execute Agent
-```
-
-### Tech Stack
-
-- Next.js 14 + TypeScript
-- Vercel Deployment
-- Python + JS SDK
-- Meta Muse Spark compatible
-
-### Links
-
-- **Live Demo:** https://trifecta-checker.vercel.app/
-- **GitHub:** https://github.com/altima261/trifecta-checker
-- **Dev.to:** dev.to/moruku36/...
-
-### Author
-
-Built by **altima261** from Japan for Meta Global AI Hackathon.
-
-GitHub: https://github.com/altima261
-Vercel: altima261
+## ✅ Solution: Trifecta Safety Gate
