@@ -1,0 +1,37 @@
+{
+  "name": "Trifecta Checker - AI Safety Gate",
+  "description": "Blocks Lethal Trifecta: Private Data + Untrusted Content + External Communication = 403 BLOCKED. Built from iPad + AMD MI300X proof.",
+  "did": "did:ccd:testnet:4BdmwCQ1yqjNENiT4RehieUZQA8u5Y143jwcdaweGtkBeV2QM1",
+  "account": "4BdmwCQ1yqjNENiT4RehieUZQA8u5Y143jwcdaweGtkBeV2QM1",
+  "network": "testnet",
+  "version": "v2-eta",
+  "capabilities": [
+    "trifecta-scoring",
+    "shield-blocking",
+    "trusted-scoring",
+    "onchain-audit"
+  ],
+  "trustedSources": {
+    ".gov": 100,
+    ".edu": 90,
+    "concordium_verified": 95,
+    ".com": 40
+  },
+  "links": {
+    "live": "https://trifecta-checker-v2-eta.vercel.app",
+    "github": "https://github.com/altima261/trifecta-checker",
+    "devArticle3": "https://dev.to/altima261/i-ran-trifecta-on-amd-mi300x-from-an-ipad-web-vault-proof",
+    "amdProof": "AMD MI300X - Agents 101 - notebooks.amd.com"
+  },
+  "verification": {
+    "identityProvider": "Digital Trust Solutions",
+    "identityStatus": "Verified",
+    "expires": "2031-11",
+    "onChainAudit": "3eLK4j5x...z44V (Mainnet)"
+  },
+  "stats": {
+    "amdRank": "Top 2.3% 150/6368",
+    "deploys": "5 Vercel from iPhone 33s each",
+    "proof": "Safe 20 CLEAN 200 vs Lethal 100 DANGER 403 BLOCKED"
+  }
+}
