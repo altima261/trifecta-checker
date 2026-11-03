@@ -1,3 +1,25 @@
+## 🆕 Nov 3 Update: QuantOrb-inspired Open Scoring
+
+> Inspired by [QuantumOrb/QuantOrb](https://github.com/QuantumOrb/QuantOrb) (56⭐ Solana holder scanner) - Open rules, not black box!
+
+**What's New:**
+- ✅ **Open Scoring 0-100:** `rules/trifecta-scoring.js` - Like QuantOrb's `rules/` 
+- ✅ **Operator Clustering:** 20 tools → N operators (like 20 wallets → 13 operators)
+- ✅ **Transparent Docs:** `docs/scoring.md` - Every weight, threshold, red flag written down
+- ✅ **Shield - Blast Radius Zero:** `rules/shield.js` - Blocks VM before spawn if serial lethal creator
+- ✅ **Scenarios:** Privacy impact -67% if linked tools sell (like QuantOrb sell scenario)
+
+**Score System:**
+- 0-20 CLEAN, 21-50 OK, 51-80 RISKY, 81-100 DANGER → 403 LETHAL BLOCKED
+- RED FLAGS force DANGER: `lethal_trifecta`, `gmail_browse_send`, `single_operator_lethal`
+- Example: `["read_gmail","browse_web","send_email"]` → Score 100 → DANGER → 403 + wallet 3eLK...z44V
+
+**Links:**
+- QuantOrb: https://github.com/QuantumOrb/QuantOrb
+- Our Rules: [/rules/trifecta-scoring.js](/rules/trifecta-scoring.js) + [/docs/scoring.md](/docs/scoring.md)
+- Live V2: https://trifecta-checker-v2-eta.vercel.app
+
+---
 # Trifecta Checker 🛡️ - Making AI Agents Trustworthy
 
 > One API call to stop data theft before it happens + Concordium ID for Verifiable Trusted Agents
