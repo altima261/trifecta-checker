@@ -1,72 +1,29 @@
-## 🆕 Nov 3 Update: QuantOrb-inspired Open Scoring
+# 🛡️ Trifecta Checker - Lethal Trifecta Safety Gate
 
-> Inspired by [QuantumOrb/QuantOrb](https://github.com/QuantumOrb/QuantOrb) (56⭐ Solana holder scanner) - Open rules, not black box!
+**Built for 【entity-Meta¦canonical_name=Meta】 Global AI Hackathon Japan 2026 by altima261**
+**From Jeddah, SA - Al-Ahsa roots - 【entity-Ministry of Education¦canonical_name=Ministry of Education】**
 
-**What's New:**
-- ✅ **Open Scoring 0-100:** `rules/trifecta-scoring.js` - Like QuantOrb's `rules/` 
-- ✅ **Operator Clustering:** 20 tools → N operators (like 20 wallets → 13 operators)
-- ✅ **Transparent Docs:** `docs/scoring.md` - Every weight, threshold, red flag written down
-- ✅ **Shield - Blast Radius Zero:** `rules/shield.js` - Blocks VM before spawn if serial lethal creator
-- ✅ **Scenarios:** Privacy impact -67% if linked tools sell (like QuantOrb sell scenario)
-
-**Score System:**
-- 0-20 CLEAN, 21-50 OK, 51-80 RISKY, 81-100 DANGER → 403 LETHAL BLOCKED
-- RED FLAGS force DANGER: `lethal_trifecta`, `gmail_browse_send`, `single_operator_lethal`
-- Example: `["read_gmail","browse_web","send_email"]` → Score 100 → DANGER → 403 + wallet 3eLK...z44V
-
-**Links:**
-- QuantOrb: https://github.com/QuantumOrb/QuantOrb
-- Our Rules: [/rules/trifecta-scoring.js](/rules/trifecta-scoring.js) + [/docs/scoring.md](/docs/scoring.md)
-- Live V2: https://trifecta-checker-v2-eta.vercel.app
-
----
-# Trifecta Checker 🛡️ - Making AI Agents Trustworthy
-
-> One API call to stop data theft before it happens + Concordium ID for Verifiable Trusted Agents
-
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://trifecta-checker.vercel.app/)
-[![API](https://img.shields.io/badge/API-Live-blue?style=for-the-badge)](https://trifecta-checker.vercel.app/api/check-trifecta)
-[![Concordium](https://img.shields.io/badge/Concordium-Trusted_Agents-0D7DFF?style=for-the-badge)](https://www.encode.club/hackathons/concordium)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-**Live Demo:** https://trifecta-checker.vercel.app/  
-**API Endpoint:** https://trifecta-checker.vercel.app/api/check-trifecta  
-**Dev.to Article:** https://dev.[STRIPPED 84 bytes]  
-**Concordium Hackathon:** https://www.encode.club/hackathons/concordium - ✅ Registered, Awaiting Start Nov 2, 2026
-
-Built by [@altima261](https://【entity-github¦canonical_name=GitHub】.com/altima261) | Tokyo / Jeddah
+🔗 **Live:** https://trifecta-checker-v2-eta.vercel.app
+🔗 **API:** https://trifecta-checker-v2-eta.vercel.app/api/check-trifecta
+🔗 **GitHub:** https://github.com/altima261/trifecta-checker
 
 ---
 
-## 🚨 Problem: Why AI Agents Can't Be Trusted
+## The Problem: Lethal Trifecta
 
-Simon Willison's **Lethal Trifecta** - When an AI agent has all 3, it becomes a data-theft weapon:
+Coined by Simon Willison, AI agent becomes data-theft tool when it has ALL THREE:
 
-1. **Private Data Access** - Gmail, DB, docs, files
-2. **Untrusted Content** - Web pages, emails, user uploads
-3. **External Communication** - HTTP requests, send_email, webhooks
+1. **Private Data Access** - inbox, DB, docs
+2. **Untrusted Content** - web pages, emails, uploads
+3. **External Communication** - HTTP, emails, webhooks
 
-> If all 3 exist, anyone who can put text in front of the agent can steal private data via prompt injection.
+If agent has all three → prompt injection = data theft.
 
-**Current agents check permissions, not combinations. No safety gate.**
+## Solution: Safety Gate
 
----
+One API call blocks execution BEFORE it runs:
 
-## ✅ Solution: Trifecta Safety Gate
----
-
-## 🚀 NOV 3-4 UPDATE - Built from iPhone + iPad (PC Broken!)
-
-### 📱 The Mobile Hackathon Story
-> PC died (Blue Screen + RAM failure) → Built entire update from iPhone + iPad!
-> - 5 Vercel Deploys in 33s each
-> - 【entity-AMD¦canonical_name=AMD】 MI300X GPU proof from iPad
-> - 18 commits via GitHub Mobile
-> - $200 Vultr credit secured
-
-### 🔥 【entity-AMD¦canonical_name=AMD】 MI300X PROOF (Nov 3 - From iPad!)
-**Tested on REAL 【entity-AMD¦canonical_name=AMD】 MI300X GPU via notebooks.【entity-amd¦canonical_name=AMD】.com:**
-
-```js
-Test 1 SAFE: Score 20 CLEAN - 200 OK - Trust 40
-Test 2 LETHAL: Score 100 DANGER - 403 BLOCKED - Trust 10 - On-chain 3eLK...z44V
+```bash
+curl -X POST https://trifecta-checker-v2-eta.vercel.app/api/check-trifecta \
+  -H "Content-Type: application/json" \
+  -d '{"tools":["read_gmail","browse_web","send_email"]}'
