@@ -1,0 +1,65 @@
+{
+  "name": "Trifecta Checker",
+  "description": "AI Safety Gate - Blocks Lethal Trifecta: Private Data + Untrusted Content + External Communication = 403 BLOCKED. Patent SAHARI V49.1 #69521324 - Built from iPad during PC failure",
+  "url": "https://trifecta-checker-v2-eta.vercel.app",
+  "provider": {
+    "organization": "Mohammed - Al-Ahsa / Jeddah KSA",
+    "url": "https://github.com/altima261/trifecta-checker"
+  },
+  "version": "2.0.0",
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "authentication": {
+    "schemes": []
+  },
+  "skills": [
+    {
+      "id": "trifecta-security-gate",
+      "name": "Lethal Trifecta Blocker",
+      "description": "Checks request for Private + Untrusted + External = LETHAL. Trusted scoring: .gov=100, .edu=90, concordium_verified=95, .com=40, unknown=10. Returns 200 CLEAN or 403 BLOCKED with on-chain audit",
+      "tags": [
+        "security",
+        "ai-safety",
+        "privacy",
+        "concordium-verified"
+      ]
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "extensions": [
+    {
+      "uri": "https://docs.concordium.com/a2a-extensions/concordium-badge/v1",
+      "description": "Verified by Concordium badge - on-chain identity verified till 2031 - CIS-8004 registry - Target Token 1001 after Bob 1000",
+      "params": {
+        "ownerAccount": "4BdmwCQ1yqjNENiT4RehieUZQA8u5Y143jwcdaweGtkBeV2QM1",
+        "did": "did:ccd:testnet:4BdmwCQ1yqjNENiT4RehieUZQA8u5Y143jwcdaweGtkBeV2QM1",
+        "workshop2": "Attended live Nov 4 2026 - Saw Bob Token 1000 - 999 total agents",
+        "externalReference": {
+          "chain": "eip155:8453",
+          "caip2": "eip155:8453",
+          "signatureScheme": "ethereum-personal-sign",
+          "cryptoFamily": "secp256k1",
+          "namespace": "CIS-8"
+        }
+      }
+    }
+  ],
+  "live": {
+    "v2": "https://trifecta-checker-v2-eta.vercel.app",
+    "github": "https://github.com/altima261/trifecta-checker",
+    "did": "did:ccd:testnet:4BdmwCQ1yqjNENiT4RehieUZQA8u5Y143jwcdaweGtkBeV2QM1",
+    "testnetAccount": "4BdmwCQ1yqjNENiT4RehieUZQA8u5Y143jwcdaweGtkBeV2QM1 - Awaiting 2000 CCD - faucet down global",
+    "workshop2": "Nov 4 2026 6PM KSA - Workshop 2: Prove verified human behind agent - 12 screenshots - 5 MCP tools - agentcards.site SHA-256",
+    "patent": "SAHARI V49.1 #69521324 SAIP Oct 27 2026",
+    "amd": "MI300X via notebooks.amd.com Agents 101 from iPad - Safe 200 vs Lethal 403 - Top 2.3% AI League"
+  }
+}
