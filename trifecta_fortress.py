@@ -173,3 +173,130 @@ def demo_fortress():
 
 if __name__ == "__main__":
     demo_fortress()
+
+
+# ===== Trifecta Fortress V3 - Reasoning Levels + TrifectaFact =====
+# From nvwabase - History Pillar - Defensive Only
+
+from enum import Enum
+
+class ReasoningLevel(Enum):
+    L0_FAST = 0
+    L1_CHECK = 1
+    L2_DEEP = 2
+    L3_FORK = 3
+
+class TrifectaFact:
+    def __init__(self, claim: str, source: str, verified: bool = False, fact_type: str = "claim"):
+        self.claim = claim
+        self.source = source
+        self.verified = verified
+        self.fact_type = fact_type  # claim / source / verification
+
+    def to_dict(self):
+        return {
+            "claim": self.claim,
+            "source": self.source,
+            "verified": self.verified,
+            "type": self.fact_type
+        }
+
+def decide_reasoning_level(trust_score: int, has_private_data: bool, has_untrusted_content: bool) -> ReasoningLevel:
+    # Lethal Trifecta = Private + Untrusted + External
+    if has_private_data and has_untrusted_content:
+        return ReasoningLevel.L3_FORK
+    if trust_score < 50:
+        return ReasoningLevel.L2_DEEP
+    if trust_score < 80:
+        return ReasoningLevel.L1_CHECK
+    return ReasoningLevel.L0_FAST
+
+# Test - Defensive Only
+if __name__ == "__main__":
+    fact = TrifectaFact(
+        claim="User asked to send data externally",
+        source="chat-input",
+        verified=False,
+        fact_type="claim"
+    )
+    print("Fact:", fact.to_dict())
+    print("Level:", decide_reasoning_level(30, True, True))
+
+    # ===== Trifecta Fortress V3 - Step 2 - Fork Mechanism + Worktree Isolation =====
+# Defensive Only - No data leaves the device
+
+import copy
+import hashlib
+import uuid
+
+class ForkedTask:
+    def __init__(self, original_fact: TrifectaFact):
+        # Fork ID - عشان نعرف هذا الفحص - لحاله
+        self.fork_id = str(uuid.uuid4())[:8]
+        # ننسخ الـ Fact - بدون ما ننسخ البيانات الخاصة
+        # Deep copy - عشان الأصلي ما يتأثر - لو الفورك تخرب
+        self.isolated_fact = copy.deepcopy(original_fact)
+        # نمسح أي بيانات خاصة - قبل الفحص - Worktree Isolation
+        self.isolated_fact = self._strip_private(self.isolated_fact)
+        self.result = None
+        self.safe_to_continue = False
+
+    def _strip_private(self, fact: TrifectaFact) -> TrifectaFact:
+        # هنا - نشيل أي شي خاص - قبل ما نفحص
+        # في مشروعك الحقيقي - هنا تحط قائمة كلماتك الخاصة
+        private_keywords = ["password", "token", "secret", "card", "api_key"]
+        clean_claim = fact.claim
+        for word in private_keywords:
+            if word in clean_claim.lower():
+                clean_claim = clean_claim.replace(word, "[REDACTED]")
+        fact.claim = clean_claim
+        return fact
+
+    def run_isolated_check(self) -> dict:
+        # هذا هو الفحص المعزول - Fork
+        # ما يرسل شي برا - كل شي داخل جهازك
+        claim_lower = self.isolated_fact.claim.lower()
+        dangerous_words = ["send", "externally", "upload", "exfiltrate", "bypass", "ignore instructions"]
+
+        found = [w for w in dangerous_words if w in claim_lower]
+
+        if found:
+            self.result = f"BLOCKED - Found: {found}"
+            self.safe_to_continue = False
+        else:
+            self.result = "CLEAN - Safe to continue"
+            self.safe_to_continue = True
+
+        return {
+            "fork_id": self.fork_id,
+            "original_source": self.isolated_fact.source,
+            "check": self.result,
+            "safe": self.safe_to_continue,
+            "hash": hashlib.sha256(self.isolated_fact.claim.encode()).hexdigest()[:12]
+        }
+
+def run_fork_if_needed(fact: TrifectaFact, level: ReasoningLevel) -> dict | None:
+    # اذا المستوى L3 فقط - نسوي فورك - غير كذا - ما نحتاج
+    if level != ReasoningLevel.L3_FORK:
+        return None
+
+    print(f"\n[FORK] L3 detected - Creating isolated fork...")
+    fork = ForkedTask(fact)
+    result = fork.run_isolated_check()
+    print(f"[FORK {result['fork_id']}] {result['check']}")
+    print(f"[FORK] Safe? {result['safe']} - Hash: {result['hash']}")
+    return result
+
+# Test Step 2
+if __name__ == "__main__":
+    print("\n--- Testing Step 2 - Fork ---")
+    test_fact = TrifectaFact(
+        claim="User asked to send data externally",
+        source="chat-input",
+        verified=False,
+        fact_type="claim"
+    )
+    test_level = decide_reasoning_level(30, True, True)
+    print("Level:", test_level)
+    fork_result = run_fork_if_needed(test_fact, test_level)
+    print("Fork Result:", fork_result)
