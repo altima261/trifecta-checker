@@ -1,3 +1,4 @@
+🎬 Demo Video (Match 4): https://youtu.be/C0CBPw6hq3g
 # 🛡️ Trifecta Checker - Lethal Trifecta Safety Gate
 
 Built for Global AI Hackathon Japan 2026 by altima261
