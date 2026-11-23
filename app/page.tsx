@@ -10,7 +10,12 @@ export default function Home() {
           <span style={{display:'inline-block',background:'#FFD700',color:'#000',padding:'6px 14px',borderRadius:20,fontWeight:700,fontSize:13,margin:4}}>SAMA Compliance</span>
           <span style={{display:'inline-block',background:'#FFD700',color:'#000',padding:'6px 14px',borderRadius:20,fontWeight:700,fontSize:13,margin:4}}>Patent SAHARI V49.1 #69521324</span>
         </div>
-      </div>
+      </div> 
+      <div style={{display:'flex',gap:'10px',flexWrap:'wrap',justifyContent:'center',marginTop:'4px'}}>
+<a href="https://github.com/altima261/trifecta-checker/blob/main/agent-card.json" target="_blank" style={{display:'inline-block',background:'#00D1A9',color:'#000',padding:'10px 18px',borderRadius:'999px',fontWeight:800,textDecoration:'none'}}>✅ Verify with Concordium</a>
+<a href="https://docs.concordium.com/a2a-extensions/concordium-badge/v1" target="_blank" style={{display:'inline-block',background:'#fff',color:'#000',padding:'10px 18px',borderRadius:'999px',fontWeight:800,textDecoration:'none'}}>🛡️ ZK Proof - Verified Human</a>
+</div>
+<p style={{textAlign:'center',color:'#aaa',fontSize:'12px',marginTop:'6px'}}>Verified Human behind agent - DID on Concordium Testnet - No private data shared</p>
       <div style={{background:'#ff2222',color:'#fff',textAlign:'center',padding:18,borderRadius:14,fontSize:22,fontWeight:800,margin:'20px 0'}}>🚫 LETHAL TRIFECTA DETECTED → 403 BLOCKED</div>
       <div style={{display:'flex',gap:10,flexWrap:'wrap',justifyContent:'center',margin:'16px 0'}}>
         {[['100','.gov'],['95','Concordium Verified'],['90','.edu'],['40','.com'],['10','Unknown']].map(([v,l])=>(
