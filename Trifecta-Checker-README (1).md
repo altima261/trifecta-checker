@@ -1,5 +1,18 @@
 # 🛡️ Trifecta Checker - Lethal Trifecta Safety Gate
+## 🏆 AMD AI League Match 4 - Intelligent Web Information Retrieval
 
+Built for **AMD AI League Match 4** - Trusted Source Verification for AI Agents.
+
+**How it works for AMD:**
+- Before an agent sends data outside, we check the destination.
+- `.gov` / `.edu` / `concordium.com` = **Trusted Source** = SAFE
+- Unknown site + Private Data = **Untrusted** = LETHAL 3/3 = 403 BLOCKED
+- Unknown site alone = WARNING 2/3 = ASK Human Approval
+
+**Demo:** https://trifecta-checker-v2-eta.vercel.app
+**Test:** Try `https://www.nasa.gov` (Trusted) vs `unknown-site.com` + private data (Blocked)
+
+---
 **Built for Meta Global AI Developer Hackathon 2026 - Japan 🇯🇵**
 **by altima261 - https://github.com/altima261**
 
